@@ -1,0 +1,47 @@
+// Definitions for NS NS0921 DAC
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2708";
+
+	fragment@0 {
+		target = <&i2s>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@1 {
+		target = <&i2c1>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			series@41 {
+				#sound-dai-cells = <0>;
+				compatible = "ns,ns0921";
+				reg = <0x41>;
+				status = "okay";
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&sound>;
+		ns0921_dac: __overlay__ {
+			compatible = "ns,ns0921-dac";
+			i2s-controller = <&i2s>;
+			status = "okay";
+		};
+	};
+
+/* 
+    __overrides__ {
+        slave_bck = <&ns0921_dac>,"ns0921-dac,slave_bck?";
+        slave_lrck = <&ns0921_dac>,"ns0921-dac,slave_lrck?";
+    };
+*/
+
+};
