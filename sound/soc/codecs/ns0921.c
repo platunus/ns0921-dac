@@ -261,5 +261,5 @@ static void __exit ns0921_exit(void)
 module_exit(ns0921_exit);
 
 MODULE_DESCRIPTION("ASoC SERI5131 driver");
-MODULE_AUTHOR("Mark Brown <broonie@opensource.wolfsonmicro.com>");
+MODULE_AUTHOR("NS Tech Research <platunus70@gmail.com>");
 MODULE_LICENSE("GPL");
